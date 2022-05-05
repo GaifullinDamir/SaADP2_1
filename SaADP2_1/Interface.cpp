@@ -66,6 +66,7 @@ void showInfo(int* mainArray, int* auxArray, int& countCompares, int& countExcha
 
 void caseSort(void(*pSort)(int*, int&, int&, int),int* mainArray, int* auxArray, int& countCompares, int& countExchanges, int size)
 {
+	countCompares = countExchanges = 0;
 	duplicateArray(mainArray, auxArray, size);
 	pSort(auxArray, countCompares, countExchanges, size);
 	showInfo(mainArray, auxArray, countCompares, countExchanges, size);
