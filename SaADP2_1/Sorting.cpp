@@ -65,10 +65,10 @@ void insertionSort(int* auxArray, int& countCompares, int& countExchanges, int s
 	for (int i = 1; i < size; i++)
 	{
 		int j = i - 1;
-		while (j >= 0 && auxArray[i] < auxArray[j])
+		while ((++countCompares) && j >= 0 && auxArray[i] < auxArray[j])
 		{
 			j = j - 1;
-			countCompares++;
+
 		}
 		if (j + 1 != i)
 		{
