@@ -19,39 +19,21 @@ void duplicateArray(int* mainArray, int* auxArray, int size)
 void bubbleSort(int* auxArray, int& countCompares, int& countExchanges, int size)
 {
 	int temporary;
-	for (int i = 0; i < size; i++)
+	for (int i = 1; i < size; i++)
 	{
-		for (int j = 0; j < size - 1 - i; j++)
+		for (int j = size - 1; j >= i; j--)
 		{
-			if (auxArray[j] > auxArray[j + 1])
+			if (auxArray[j - 1] > auxArray[j])
 			{
-				temporary = auxArray[j];
-				auxArray[j] = auxArray[j + 1];
-				auxArray[j + 1] = temporary;
+				temporary = auxArray[j - 1];
+				auxArray[j - 1] = auxArray[j];
+				auxArray[j] = temporary;
 				countExchanges++;
 			}
 			countCompares++;
 		}
 	}
 }
-
-//void selectionSort(int* auxArray, int& countCompares, int& countExchanges, int size)
-//{
-//	int temporary;
-//	for (int startIndex = 0; startIndex < size - 1; startIndex++)
-//	{
-//		int smallestIndex = startIndex;
-//		for (int currentIndex = startIndex + 1; currentIndex < size; currentIndex++)
-//		{
-//			if (auxArray[currentIndex] < auxArray[smallestIndex]) { smallestIndex = currentIndex; }
-//			countCompares++;
-//		}
-//		temporary = auxArray[startIndex];
-//		auxArray[startIndex] = auxArray[smallestIndex];
-//		auxArray[smallestIndex] = temporary;
-//		countExchanges++;
-//	}
-//}
 
 void selectionSort(int* auxArray, int& countCompares, int& countExchanges, int size)
 {
@@ -80,10 +62,10 @@ void selectionSort(int* auxArray, int& countCompares, int& countExchanges, int s
 
 void insertionSort(int* auxArray, int& countCompares, int& countExchanges, int size)
 {
-	for (int i = 2; i < size; i++)
+	for (int i = 1; i < size; i++)
 	{
 		int j = i - 1;
-		while (j > 0 && auxArray[i] < auxArray[j])
+		while (j >= 0 && auxArray[i] < auxArray[j])
 		{
 			j = j - 1;
 			countCompares++;
