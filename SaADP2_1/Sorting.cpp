@@ -39,23 +39,23 @@ void selectionSort(int* auxArray, int& countCompares, int& countExchanges, int s
 {
 	int min = 0;
 	int temp = 0;
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size - 1 ; i++)
 	{
+		min = i;
 		for (int j = i + 1; j < size; j++)
 		{
-			min = i;
 			countCompares++;
 			if (auxArray[j] < auxArray[min])
 			{
 				min = j;
 			}
-			if (i != min)
-			{
-				temp = auxArray[i];
-				auxArray[i] = auxArray[min];
-				auxArray[min] = temp;
-				countExchanges++;
-			}
+		}
+		if (i != min)
+		{
+			temp = auxArray[i];
+			auxArray[i] = auxArray[min];
+			auxArray[min] = temp;
+			countExchanges++;
 		}
 	}
 }
@@ -68,7 +68,6 @@ void insertionSort(int* auxArray, int& countCompares, int& countExchanges, int s
 		while ((++countCompares) && j >= 0 && auxArray[i] < auxArray[j])
 		{
 			j = j - 1;
-
 		}
 		if (j + 1 != i)
 		{
@@ -76,9 +75,9 @@ void insertionSort(int* auxArray, int& countCompares, int& countExchanges, int s
 			while (l >= j + 1)
 			{
 				auxArray[l + 1] = auxArray[l]; l--;
+				countExchanges++;
 			}
 			auxArray[j + 1] = temporary;
-			countExchanges++;
 		}
 	}
 }
